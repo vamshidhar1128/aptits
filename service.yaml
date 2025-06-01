@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: aptits-service
+spec:
+  selector:
+    app: aptits
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8081
+  type: LoadBalancer  # Change to NodePort if not using a cloud provider
