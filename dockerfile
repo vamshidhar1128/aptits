@@ -1,2 +1,6 @@
-FROM tomcat:10.0
-COPY target/AptItSolutions-0.0.1-SNAPSHOT.jar /var/local/tomcat/webapps/
+# Use a lightweight base image with Java 17
+FROM openjdk:17-jdk-slim
+VOLUME /tmp
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
